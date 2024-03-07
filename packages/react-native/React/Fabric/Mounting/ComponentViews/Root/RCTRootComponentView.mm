@@ -23,20 +23,12 @@ using namespace facebook::react;
   if (self = [super initWithFrame:frame]) {
     _props = RootShadowNode::defaultSharedProps();
     _contentHasAppeared = NO;
-#if TARGET_OS_TV
-     self.tvRemoteHandler = [[RCTTVRemoteHandler alloc] initWithView:self];
-#endif
   }
 
   return self;
 }
 
 #if TARGET_OS_TV
-- (void)dealloc
-{
-  self.tvRemoteHandler = nil;
-}
-
 - (NSArray<id<UIFocusEnvironment>> *)preferredFocusEnvironments {
   if (self.reactPreferredFocusEnvironments != nil) {
     NSArray<id<UIFocusEnvironment>> *tempReactPreferredFocusEnvironments = self.reactPreferredFocusEnvironments;
