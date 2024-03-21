@@ -29,11 +29,13 @@ import * as React from 'react';
 import {
   BackHandler,
   Button,
+  Platform,
   Linking,
   Platform,
   StyleSheet,
-  View,
   useColorScheme,
+  TVEventControl,
+  View,
 } from 'react-native';
 
 // RNTester App currently uses in memory storage for storing navigation state
@@ -77,6 +79,13 @@ const RNTesterApp = ({
 
   // Setup hardware back button press listener
   React.useEffect(() => {
+    // For RNTester, menu key back navigation needs this enabled
+    TVEventControl.enableGestureHandlersCancelTouches();
+    if (activeModuleKey) {
+      TVEventControl.enableTVMenuKey();
+    } else {
+      TVEventControl.disableTVMenuKey();
+    }
     const handleHardwareBackPress = () => {
       if (activeModuleKey) {
         handleBackPress();
@@ -271,7 +280,7 @@ const RNTesterApp = ({
           />
         )}
       </View>
-      <View style={styles.bottomNavbar}>
+      <View style={Platform.isTV ? styles.tvNavBar : styles.bottomNavbar}>
         <RNTesterNavBar
           screen={screen || Screens.COMPONENTS}
           isExamplePageOpen={!!activeModule}
@@ -288,7 +297,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  tvNavBar: {
+    top: 20,
+    left: '5%',
+    width: '90%',
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'absolute',
+    height: navBarHeight,
+  },
   bottomNavbar: {
+    bottom: 0,
+    left: 20,
+    width: '30%',
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'absolute',
     height: navBarHeight,
   },
   hidden: {

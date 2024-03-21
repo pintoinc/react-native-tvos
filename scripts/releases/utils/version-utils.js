@@ -138,8 +138,7 @@ function isStableRelease(version /*: Version */) /*: boolean */ {
   return (
     version.major === '0' &&
     !!version.minor.match(/^\d+$/) &&
-    !!version.patch.match(/^\d+$/) &&
-    version.prerelease == null
+    !!version.patch.match(/^\d+$/)
   );
 }
 

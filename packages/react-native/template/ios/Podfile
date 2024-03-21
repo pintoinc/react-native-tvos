@@ -1,6 +1,6 @@
 require "../../react-native/scripts/cocoapods/autolinking.rb"
 
-platform :ios, min_ios_version_supported
+platform :tvos, min_ios_version_supported
 prepare_react_native_project!
 
 linkage = ENV['USE_FRAMEWORKS']
