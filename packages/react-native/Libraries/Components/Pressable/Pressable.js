@@ -281,6 +281,9 @@ function Pressable(
 
   const [focused, setFocused] = useState(false);
 
+  const shouldUpdatePressed =
+    typeof children === 'function' || typeof style === 'function';
+
   let _accessibilityState = {
     busy: ariaBusy ?? accessibilityState?.busy,
     checked: ariaChecked ?? accessibilityState?.checked,
@@ -397,12 +400,12 @@ function Pressable(
       if (isTVSelectable !== false || focusable !== false) {
         // $FlowFixMe[prop-missing]
         if (evt?.eventType === 'focus') {
-          setFocused(true);
+          shouldUpdatePressed && setFocused(true);
           onFocus && onFocus(evt);
           // $FlowFixMe[prop-missing]
         } else if (evt.eventType === 'blur') {
           onBlur && onBlur(evt);
-          setFocused(false);
+          shouldUpdatePressed && setFocused(false);
         }
       }
       // $FlowFixMe[prop-missing]
@@ -416,7 +419,7 @@ function Pressable(
         onLongPress && onLongPress(evt);
       }
     },
-    [focused, onBlur, onFocus, onLongPress, onPress, focusable, isTVSelectable],
+    [focused, onBlur, onFocus, onLongPress, onPress, focusable, isTVSelectable, shouldUpdatePressed],
   );
 
   React.useEffect(() => {
