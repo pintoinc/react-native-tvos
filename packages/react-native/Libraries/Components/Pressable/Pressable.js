@@ -409,12 +409,12 @@ function Pressable(
         }
       }
       // $FlowFixMe[prop-missing]
-      if (focused && evt.eventType === 'select') {
+      if (evt.eventType === 'select') {
         // $FlowFixMe[incompatible-exact]
         onPress && onPress(evt);
       }
       // $FlowFixMe[prop-missing]
-      if (focused && evt.eventType === 'longSelect') {
+      if (evt.eventType === 'longSelect') {
         // $FlowFixMe[incompatible-exact]
         onLongPress && onLongPress(evt);
       }
