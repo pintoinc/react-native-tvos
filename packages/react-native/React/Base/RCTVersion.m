@@ -24,7 +24,7 @@ NSDictionary* RCTGetReactNativeVersion(void)
                   RCTVersionMajor: @(0),
                   RCTVersionMinor: @(74),
                   RCTVersionPatch: @(3),
-                  RCTVersionPrerelease: @"0",
+                  RCTVersionPrerelease: @"1test0",
                   };
   });
   return __rnVersion;
