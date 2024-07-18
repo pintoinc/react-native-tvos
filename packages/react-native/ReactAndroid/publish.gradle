@@ -9,15 +9,14 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-// def isSnapshot = findProperty('isSnapshot')?.toBoolean()
-def isSnapshot = true
+def isSnapshot = findProperty('isSnapshot')?.toBoolean()
 def signingKey = findProperty('SIGNING_KEY')
 def signingPwd = findProperty('SIGNING_PWD')
 def sonatypeUsername = findProperty('sonatypeUsername')
 def sonatypePassword = findProperty('sonatypePassword')
 
 def reactAndroidProjectDir = project(':packages:react-native:ReactAndroid').projectDir
-def mavenTempLocalUrl = 'file:///tmp/maven-local'
+def mavenTempLocalUrl = findProperty('MAVEN_TMP_LOCAL_URL') ?: 'file:///tmp/maven-local'
 
 publishing {
     publications {

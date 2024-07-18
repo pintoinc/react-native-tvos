@@ -21,12 +21,21 @@ type BuildType = 'dry-run' | 'release' | 'nightly' | 'prealpha';
 */
 
 function generateAndroidArtifacts(releaseVersion /*: string */) {
+  const mavenTempLocalUrl = env.MAVEN_TMP_LOCAL_URL;
+
+  const publishCommandLine = mavenTempLocalUrl
+    ? `./gradlew -DMAVEN_TMP_LOCAL_URL=${mavenTempLocalUrl} publishAllToMavenTempLocal`
+    : './gradlew publishAllToMavenTempLocal';
   // -------- Generating Android Artifacts
   echo('Generating Android artifacts inside /tmp/maven-local');
-  if (exec('./gradlew publishAllToMavenTempLocal').code) {
+  if (exec(publishCommandLine).code) {
     echo('Could not generate artifacts');
     exit(1);
   }
+
+  const mavenTempLocalPath = mavenTempLocalUrl
+    ? mavenTempLocalUrl.substring(7)
+    : '/tmp/maven-local';
 
   echo('Generated artifacts for Maven');
 
@@ -45,12 +54,12 @@ function generateAndroidArtifacts(releaseVersion /*: string */) {
     if (
       !test(
         '-e',
-        `/tmp/maven-local/io/github/react-native-tvos/react-android/${releaseVersion}/${name}`,
+        `${mavenTempLocalPath}/io/github/react-native-tvos/react-android/${releaseVersion}/${name}`,
       )
     ) {
       echo(
         `Failing as expected file: \n\
-      /tmp/maven-local/io/github/react-native-tvos/react-android/${releaseVersion}/${name}\n\
+      ${mavenTempLocalPath}/io/github/react-native-tvos/react-android/${releaseVersion}/${name}\n\
       was not correctly generated.`,
       );
       exit(1);
