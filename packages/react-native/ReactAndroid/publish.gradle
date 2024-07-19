@@ -89,15 +89,15 @@ publishing {
         }
     }
 
-//     if (signingKey && signingPwd) {
-//         logger.info("PGP Key found - Signing enabled")
-//         signing {
-//             useInMemoryPgpKeys(signingKey, signingPwd)
-//             sign(publishing.publications.release)
-//         }
-//     } else {
-//         logger.info("Signing disabled as the PGP key was not found")
-//     }
+    if (signingKey && signingPwd) {
+        logger.info('PGP Key found - Signing enabled')
+        signing {
+            useInMemoryPgpKeys(signingKey, signingPwd)
+            sign(publishing.publications.release)
+        }
+    } else {
+        logger.info('Signing disabled as the PGP key was not found')
+    }
 
     // For the TV repo, we sign manually for now, using the gpg command line tool.
     // Properties that need to be set:
