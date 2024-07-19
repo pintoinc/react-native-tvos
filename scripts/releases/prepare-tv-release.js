@@ -27,11 +27,20 @@ const fs_extra = require('fs-extra');
 const os = require('os');
 const path = require('path');
 const {echo, exec, exit} = require('shelljs');
+const {Readable} = require('stream');
+const {finished} = require('stream/promises');
 
-let extraHermesDirectoryPath;
-{
+const downloadFile = async (url, destinationDir, fileName) => {
+  const res = await fetch(url);
+  const destination = path.resolve(destinationDir, fileName);
+  const fileStream = fs.createWriteStream(destination, {flags: 'wx'});
+  await finished(Readable.fromWeb(res.body).pipe(fileStream));
+};
+
+const executeScriptAsync = async function () {
   const HERMES_INSTALL_LOCATION = 'packages/react-native/sdks';
   const HERMES_SOURCE_DEST_PATH = `${HERMES_INSTALL_LOCATION}/hermes`;
+  let extraHermesDirectoryPath;
 
   let hermesReleaseTag;
   let hermesReleaseURI;
@@ -63,8 +72,6 @@ let extraHermesDirectoryPath;
   const tmpExtractDir = fs.mkdtempSync(path.join(os.tmpdir(), 'hermes'));
 
   const hermesInstallScript = `
-    mkdir -p ${HERMES_SOURCE_DEST_PATH} && \
-    wget ${hermesReleaseURI} -O ${tmpDownloadDir}/hermes.tar.gz && \
     tar -xzf ${tmpDownloadDir}/hermes.tar.gz -C ${tmpExtractDir} && \
     HERMES_SOURCE_EXTRACT_PATH=$(ls -d ${tmpExtractDir}/*) && \
     mv $HERMES_SOURCE_EXTRACT_PATH ${HERMES_SOURCE_DEST_PATH}
@@ -76,22 +83,30 @@ let extraHermesDirectoryPath;
       exit(1);
     }
   }
+
+  fs.mkdirSync(HERMES_SOURCE_DEST_PATH, {recursive: true});
+
+  echo(`Downloading Hermes from ${hermesReleaseURI}...`);
+  await downloadFile(hermesReleaseURI, tmpDownloadDir, 'hermes.tar.gz');
+  echo('Download complete.');
+
   if (exec(hermesInstallScript).code) {
     echo('Failed to include Hermes in release.');
     exit(1);
   }
-}
 
-// generate Maven artifacts in /tmp/maven-local
+  if (extraHermesDirectoryPath) {
+    echo('Cleanup extra hermes directory...');
+    fs.rmSync(extraHermesDirectoryPath, {recursive: true, force: true});
+    echo(`Removed ${extraHermesDirectoryPath}.`);
+  }
 
-generateAndroidArtifacts(releaseVersion);
+  // generate Maven artifacts in /tmp/maven-local
+  generateAndroidArtifacts(releaseVersion);
 
-if (extraHermesDirectoryPath) {
-  echo('Cleanup extra hermes directory...');
-  fs.rmSync(extraHermesDirectoryPath, {recursive: true, force: true});
-  echo(`Removed ${extraHermesDirectoryPath}.`);
-}
+  echo(`Release prepared for version ${releaseVersion}`);
 
-echo(`Release prepared for version ${releaseVersion}`);
+  exit(0);
+};
 
-exit(0);
+executeScriptAsync();
