@@ -96,10 +96,10 @@ publishing {
             sign(publishing.publications.release)
         }
     } else {
-        logger.info('Signing disabled as the PGP key was not found')
-    }
-
-    // For the TV repo, we sign manually for now, using the gpg command line tool.
+        logger.info('PGP Key not found - use GPG command for signing')
+        signing {
+            useGpgCmd()
+            sign(publishing.publications.release)
     // Properties that need to be set:
     //
     // signing.gnupg.executable=gpg
@@ -107,8 +107,6 @@ publishing {
     // signing.gnupg.keyName=(your key ID)
     // signing.keyId=(your key ID)
     // signing.secretKeyRingFile=(file with your exported secret keys)
-    signing {
-        useGpgCmd()
-        sign(publishing.publications.release)
+        }
     }
 }
