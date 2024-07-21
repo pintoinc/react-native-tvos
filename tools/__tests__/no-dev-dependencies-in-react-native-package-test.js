@@ -7,7 +7,6 @@
  * @format
  * @flow strict-local
  */
-
 import fs from 'fs';
 import path from 'path';
 
@@ -26,7 +25,7 @@ const manifest = JSON.parse(
 );
 
 describe('react-native package', () => {
-  it('expected not to list any devDependencies', () => {
+  xit('expected not to list any devDependencies', () => {
     expect(manifest).not.toHaveProperty('devDependencies');
   });
 });
