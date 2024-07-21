@@ -83,8 +83,8 @@ describe('setVersion', () => {
       );
       if (filePath.endsWith(templatePath)) {
         expect(JSON.parse(content).dependencies['react-native']).toBe(
-         //  '1000.0.0',
-         'npm:react-native-tvos@1000.0.0',
+          // '1000.0.0',
+          'npm:react-native-tvos@1000.0.0',
         );
       }
     };
