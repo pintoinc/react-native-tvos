@@ -10,18 +10,17 @@
 
 'use strict';
 
-const React = require('react');
+import type {ViewStyleProp} from '../../../../../Libraries/StyleSheet/StyleSheet';
 
+const React = require('react');
 const {
   Dimensions,
-  TVTextScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
+  TVTextScrollView,
   View,
 } = require('react-native');
-
-import type {ViewStyleProp} from '../../../../../Libraries/StyleSheet/StyleSheet';
 
 const screenHeight = Dimensions.get('window').height;
 const scale = screenHeight / 1080;

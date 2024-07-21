@@ -9,6 +9,7 @@
  */
 
 import type {ViewStyleProp} from '../../StyleSheet/StyleSheet';
+import type {TVParallaxPropertiesType} from '../TV/TVViewPropTypes';
 import typeof TouchableWithoutFeedback from './TouchableWithoutFeedback';
 
 import Animated from '../../Animated/Animated';
@@ -17,12 +18,10 @@ import Pressability, {
   type PressabilityConfig,
 } from '../../Pressability/Pressability';
 import {PressabilityDebugView} from '../../Pressability/PressabilityDebug';
-import TVTouchable from './TVTouchable';
 import flattenStyle from '../../StyleSheet/flattenStyle';
 import Platform from '../../Utilities/Platform';
-import type {TVParallaxPropertiesType} from '../TV/TVViewPropTypes';
 import tagForComponentOrHandle from '../TV/tagForComponentOrHandle';
-
+import TVTouchable from './TVTouchable';
 import * as React from 'react';
 
 type TVProps = $ReadOnly<{|

@@ -12,11 +12,10 @@ import type {ViewProps} from './ViewPropTypes';
 
 import flattenStyle from '../../StyleSheet/flattenStyle';
 import TextAncestor from '../../Text/TextAncestor';
-import ViewNativeComponent from './ViewNativeComponent';
-import * as React from 'react';
-import {Commands} from './ViewNativeComponent';
-
 import setAndForwardRef from '../../Utilities/setAndForwardRef';
+import ViewNativeComponent from './ViewNativeComponent';
+import {Commands} from './ViewNativeComponent';
+import * as React from 'react';
 
 export type Props = ViewProps;
 

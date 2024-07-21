@@ -10,10 +10,10 @@
 
 'use strict';
 
+import {useRNTesterTheme} from '../../components/RNTesterTheme';
+
 const React = require('react');
 const ReactNative = require('react-native');
-
-import {useRNTesterTheme} from '../../components/RNTesterTheme';
 
 const {
   View,
@@ -76,9 +76,8 @@ const FocusableBox = React.memo(
     const theme = useRNTesterTheme();
 
     if (slow) {
-      // eslint-disable-next-line no-undef
       const now = performance.now();
-      // eslint-disable-next-line no-undef
+
       while (performance.now() - now < 200) {}
     }
 

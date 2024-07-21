@@ -10,14 +10,13 @@
 
 'use strict';
 
-const React = require('react');
-const StyleSheet = require('../../StyleSheet/StyleSheet');
-const TabBarItemIOS = require('./TabBarItemIOS');
-
-const RCTTabBar = require('./RCTTabBarNativeComponent');
-
-import type {ViewProps} from '../View/ViewPropTypes';
 import type {ColorValue} from '../../StyleSheet/StyleSheetTypes';
+import type {ViewProps} from '../View/ViewPropTypes';
+
+const StyleSheet = require('../../StyleSheet/StyleSheet');
+const RCTTabBar = require('./RCTTabBarNativeComponent');
+const TabBarItemIOS = require('./TabBarItemIOS');
+const React = require('react');
 
 type Props = $ReadOnly<{|
   ...ViewProps,

@@ -10,10 +10,10 @@
 
 'use strict';
 
+import {useRNTesterTheme} from '../../components/RNTesterTheme';
+
 const React = require('react');
 const ReactNative = require('react-native');
-
-import {useRNTesterTheme} from '../../components/RNTesterTheme';
 
 const {View, StyleSheet, Pressable, Text, TVFocusGuideView} = ReactNative;
 

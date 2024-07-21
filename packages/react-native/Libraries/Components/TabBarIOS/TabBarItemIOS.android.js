@@ -10,8 +10,9 @@
 'use strict';
 
 import React from 'react';
-const View = require('../View/View');
+
 const StyleSheet = require('../../StyleSheet/StyleSheet');
+const View = require('../View/View');
 
 let showedDeprecationWarning = false;
 

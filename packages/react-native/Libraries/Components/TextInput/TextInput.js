@@ -18,7 +18,6 @@ import type {ViewProps} from '../View/ViewPropTypes';
 import type {TextInputType} from './TextInput.flow';
 
 import usePressability from '../../Pressability/usePressability';
-import warnOnce from '../../Utilities/warnOnce';
 import flattenStyle from '../../StyleSheet/flattenStyle';
 import StyleSheet, {
   type ColorValue,
@@ -29,6 +28,7 @@ import Text from '../../Text/Text';
 import TextAncestor from '../../Text/TextAncestor';
 import Platform from '../../Utilities/Platform';
 import useMergeRefs from '../../Utilities/useMergeRefs';
+import warnOnce from '../../Utilities/warnOnce';
 import TextInputState from './TextInputState';
 import invariant from 'invariant';
 import nullthrows from 'nullthrows';

@@ -12,16 +12,16 @@ import type {EdgeInsetsProp} from '../../StyleSheet/EdgeInsetsPropType';
 import type {ColorValue} from '../../StyleSheet/StyleSheet';
 import type {PressEvent} from '../../Types/CoreEventTypes';
 
-import ReactNative from '../../Renderer/shims/ReactNative';
 import {PressabilityDebugView} from '../../Pressability/PressabilityDebug';
 import UIManager from '../../ReactNative/UIManager';
+import ReactNative from '../../Renderer/shims/ReactNative';
 import Platform from '../../Utilities/Platform';
 import SoundManager from '../Sound/SoundManager';
+import tagForComponentOrHandle from '../TV/tagForComponentOrHandle';
 import {tvFocusEventHandler} from '../TV/TVFocusEventHandler';
 import BoundingDimensions from './BoundingDimensions';
 import Position from './Position';
 import * as React from 'react';
-import tagForComponentOrHandle from '../TV/tagForComponentOrHandle';
 
 const extractSingleTouch = (nativeEvent: {
   +changedTouches: $ReadOnlyArray<PressEvent['nativeEvent']>,

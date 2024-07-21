@@ -267,8 +267,6 @@ const Text: React.AbstractComponent<
             ? _hasOnPressOrOnLongPress
             : _accessible
         }
-        accessibilityState={_accessibilityState}
-        selectable={_selectable}
         accessibilityLabel={ariaLabel ?? accessibilityLabel}
         accessibilityState={nativeTextAccessibilityState}
         allowFontScaling={allowFontScaling !== false}

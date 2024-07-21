@@ -10,15 +10,16 @@
 
 'use strict';
 
-import invariant from 'invariant';
-import tagForComponentOrHandle from '../TV/tagForComponentOrHandle';
 import type {
   BlurEvent,
   FocusEvent,
   PressEvent,
 } from '../../Types/CoreEventTypes';
+
 import Platform from '../../Utilities/Platform';
+import tagForComponentOrHandle from '../TV/tagForComponentOrHandle';
 import {tvFocusEventHandler} from '../TV/TVFocusEventHandler';
+import invariant from 'invariant';
 
 type TVTouchableConfig = $ReadOnly<{|
   getDisabled: () => boolean,

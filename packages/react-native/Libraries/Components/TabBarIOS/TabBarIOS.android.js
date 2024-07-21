@@ -11,9 +11,10 @@
 'use strict';
 
 import React from 'react';
+
 const StyleSheet = require('../../StyleSheet/StyleSheet');
-const TabBarItemIOS = require('./TabBarItemIOS');
 const View = require('../View/View');
+const TabBarItemIOS = require('./TabBarItemIOS');
 
 let showedDeprecationWarning = false;
 
