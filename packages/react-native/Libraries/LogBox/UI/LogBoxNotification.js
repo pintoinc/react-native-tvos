@@ -12,9 +12,9 @@ import type {Message as MessageType} from '../Data/parseLogBoxLog';
 
 import View from '../../Components/View/View';
 import Image from '../../Image/Image';
-import Platform from '../../Utilities/Platform';
 import StyleSheet from '../../StyleSheet/StyleSheet';
 import Text from '../../Text/Text';
+import Platform from '../../Utilities/Platform';
 import * as LogBoxData from '../Data/LogBoxData';
 import LogBoxLog from '../Data/LogBoxLog';
 import LogBoxButton from './LogBoxButton';
@@ -34,12 +34,9 @@ function LogBoxLogNotification(props: Props): React.Node {
   const {totalLogCount, level, log} = props;
 
   // Eagerly symbolicate so the stack is available when pressing to inspect.
-  React.useEffect(
-    () => {
-      LogBoxData.symbolicateLogLazy(log);
-    },
-    [log],
-  );
+  React.useEffect(() => {
+    LogBoxData.symbolicateLogLazy(log);
+  }, [log]);
 
   return (
     <View style={toastStyles.container}>
@@ -66,8 +63,7 @@ function LogBoxLogNotification(props: Props): React.Node {
             default: LogBoxStyle.getBackgroundColor(1),
             pressed: LogBoxStyle.getBackgroundColor(0.9),
           }}>
-          <View
-            style={toastStyles.tvDismissContainer}>
+          <View style={toastStyles.tvDismissContainer}>
             <Message message={{content: 'Dismiss', substitutions: []}} />
           </View>
         </LogBoxButton>
@@ -215,7 +211,7 @@ const dismissStyles = StyleSheet.create({
 
 const toastStyles = StyleSheet.create({
   container: {
-    height: (Platform.isTV ? 96 : 48),
+    height: Platform.isTV ? 96 : 48,
     position: 'relative',
     width: '100%',
     justifyContent: 'center',
@@ -247,7 +243,7 @@ const toastStyles = StyleSheet.create({
     flexBasis: 'auto',
     height: 30,
     justifyContent: 'center',
-  }
+  },
 });
 
 export default LogBoxLogNotification;

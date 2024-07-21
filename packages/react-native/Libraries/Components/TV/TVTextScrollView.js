@@ -8,12 +8,13 @@
  * @flow strict-local
  */
 
-const React = require('react');
-const ScrollView = require('../ScrollView/ScrollView');
-const {tvFocusEventHandler} = require('./TVFocusEventHandler');
+import typeof Props from '../ScrollView/ScrollView';
 
 import tagForComponentOrHandle from './tagForComponentOrHandle';
-import typeof Props from '../ScrollView/ScrollView';
+
+const ScrollView = require('../ScrollView/ScrollView');
+const {tvFocusEventHandler} = require('./TVFocusEventHandler');
+const React = require('react');
 
 /**
  * Convenience wrapper to create a scroll view that will scroll correctly

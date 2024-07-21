@@ -10,11 +10,12 @@
 
 'use strict';
 
+import type {TVRemoteEvent} from '../../Types/CoreEventTypes';
+
+import NativeTVNavigationEventEmitter from '../../../src/private/specs/modules/NativeTVNavigationEventEmitter';
 import NativeEventEmitter from '../../EventEmitter/NativeEventEmitter';
 import Platform from '../../Utilities/Platform';
 import {type EventSubscription} from '../../vendor/emitter/EventEmitter';
-import NativeTVNavigationEventEmitter from '../../../src/private/specs/modules/NativeTVNavigationEventEmitter';
-import type {TVRemoteEvent} from '../../Types/CoreEventTypes';
 
 let __nativeTVNavigationEventEmitter: ?NativeEventEmitter<TVRemoteEvent> = null;
 

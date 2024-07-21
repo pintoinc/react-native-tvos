@@ -28,12 +28,12 @@ import {
 import * as React from 'react';
 import {
   BackHandler,
-  Platform,
   Linking,
+  Platform,
   StyleSheet,
-  useColorScheme,
   TVEventControl,
   View,
+  useColorScheme,
 } from 'react-native';
 
 // RNTester App currently uses in memory storage for storing navigation state

@@ -10,16 +10,17 @@
 
 'use strict';
 
-const requireNativeComponent = require('../../ReactNative/requireNativeComponent').default;
-
-import type {ViewProps} from '../View/ViewPropTypes';
+import type {ImageSource} from '../../Image/ImageSource';
 import type {ColorValue} from '../../StyleSheet/StyleSheetTypes';
 import type {SyntheticEvent} from '../../Types/CoreEventTypes';
-import type {ImageSource} from '../../Image/ImageSource';
+import type {ViewProps} from '../View/ViewPropTypes';
+
+const requireNativeComponent =
+  require('../../ReactNative/requireNativeComponent').default;
 
 type TabBarItemEvent = SyntheticEvent<null>;
 
-export type NativeProps = $ReadOnly< {|
+export type NativeProps = $ReadOnly<{|
   ...ViewProps,
 
   /**
@@ -94,6 +95,6 @@ export type NativeProps = $ReadOnly< {|
    * @platform ios
    */
   isTVSelectable?: ?boolean,
-|} >;
+|}>;
 
 module.exports = requireNativeComponent('RCTTabBarItem');

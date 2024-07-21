@@ -10,16 +10,17 @@
 
 'use strict';
 
+import type {ImageSource} from '../../Image/ImageSource';
+import type {ColorValue} from '../../StyleSheet/StyleSheetTypes';
+import type {SyntheticEvent} from '../../Types/CoreEventTypes';
+import type {ViewProps} from '../View/ViewPropTypes';
+
 import React from 'react';
+
 // const StaticContainer = require('../StaticContainer.react');
 const StyleSheet = require('../../StyleSheet/StyleSheet');
 const View = require('../View/View');
 const RCTTabBarItemNativeComponent = require('./RCTTabBarItemNativeComponent');
-
-import type {ViewProps} from '../View/ViewPropTypes';
-import type {ColorValue} from '../../StyleSheet/StyleSheetTypes';
-import type {SyntheticEvent} from '../../Types/CoreEventTypes';
-import type {ImageSource} from '../../Image/ImageSource';
 
 type Props = $ReadOnly<{|
   ...ViewProps,

@@ -11,7 +11,15 @@
 import type {RNTesterModuleExample} from '../../types/RNTesterTypes';
 
 import * as React from 'react';
-import {Modal, Platform, Pressable, StyleSheet, Text, useTVEventHandler, View} from 'react-native';
+import {
+  Modal,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  useTVEventHandler,
+} from 'react-native';
 
 function TVEventView(): React.Node {
   const [lastEventType, setLastEventType] = React.useState('');

@@ -8,8 +8,6 @@
  * @format
  */
 
-import TVTouchable from './TVTouchable';
-import type {TVParallaxPropertiesType} from '../TV/TVViewPropTypes';
 import type {
   AccessibilityActionEvent,
   AccessibilityActionInfo,
@@ -24,13 +22,15 @@ import type {
   LayoutEvent,
   PressEvent,
 } from '../../Types/CoreEventTypes';
-import Platform from '../../Utilities/Platform';
+import type {TVParallaxPropertiesType} from '../TV/TVViewPropTypes';
 
 import View from '../../Components/View/View';
 import Pressability, {
   type PressabilityConfig,
 } from '../../Pressability/Pressability';
 import {PressabilityDebugView} from '../../Pressability/PressabilityDebug';
+import Platform from '../../Utilities/Platform';
+import TVTouchable from './TVTouchable';
 import * as React from 'react';
 
 type Props = $ReadOnly<{|

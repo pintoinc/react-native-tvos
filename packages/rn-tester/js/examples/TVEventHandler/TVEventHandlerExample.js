@@ -10,9 +10,10 @@
 
 'use strict';
 
+import type {TVRemoteEvent} from '../../../../../Libraries/Types/CoreEventTypes';
+
 import * as React from 'react';
 import ReactNative from 'react-native';
-import type {TVRemoteEvent} from '../../../../../Libraries/Types/CoreEventTypes';
 
 const {
   StyleSheet,
@@ -232,6 +233,12 @@ const TVEventHandlerView: () => React.Node = () => {
     }
   });
 
+  // Apple TV: enable detection of pan gesture events (and disable on unmount)
+  React.useEffect(() => {
+    TVEventControl?.enableTVPanGesture();
+    return () => TVEventControl?.disableTVPanGesture();
+  }, []);
+
   if (!Platform.isTV) {
     return (
       <View>
@@ -239,12 +246,6 @@ const TVEventHandlerView: () => React.Node = () => {
       </View>
     );
   }
-
-  // Apple TV: enable detection of pan gesture events (and disable on unmount)
-  React.useEffect(() => {
-    TVEventControl.enableTVPanGesture();
-    return () => TVEventControl.disableTVPanGesture();
-  }, []);
 
   return (
     <View style={styles.container}>

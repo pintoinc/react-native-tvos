@@ -1,8 +1,9 @@
+import type {TVRemoteEvent} from '../../Types/CoreEventTypes';
+
+import {type EventSubscription} from '../../vendor/emitter/EventEmitter';
+import TVEventHandler from './TVEventHandler';
 // @flow
 import React from 'react';
-import TVEventHandler from './TVEventHandler';
-import type {TVRemoteEvent} from '../../Types/CoreEventTypes';
-import {type EventSubscription} from '../../vendor/emitter/EventEmitter';
 
 
 const useTVEventHandler = (handleEvent: (evt: TVRemoteEvent) => void) => {

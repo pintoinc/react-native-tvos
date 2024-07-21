@@ -48,7 +48,9 @@ function ContentPress() {
             setTimesPressed(current => current + 1);
           }}>
           {({pressed, focused}) => (
-            <Text testID="one_press_me_button" style={[styles.text, {opacity: focused ? 0.5 : 1.0}]}>
+            <Text
+              testID="one_press_me_button"
+              style={[styles.text, {opacity: focused ? 0.5 : 1.0}]}>
               {pressed ? 'Pressed!' : 'Press Me'}
             </Text>
           )}

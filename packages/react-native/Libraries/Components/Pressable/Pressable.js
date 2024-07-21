@@ -13,6 +13,7 @@ import type {
   MouseEvent,
   PressEvent,
 } from '../../Types/CoreEventTypes';
+import type {TVParallaxPropertiesType} from '../TV/TVViewPropTypes';
 import type {
   AccessibilityActionEvent,
   AccessibilityActionInfo,
@@ -24,12 +25,11 @@ import type {
 import {PressabilityDebugView} from '../../Pressability/PressabilityDebug';
 import usePressability from '../../Pressability/usePressability';
 import {type RectOrSize} from '../../StyleSheet/Rect';
-import useMergeRefs from '../../Utilities/useMergeRefs';
-import View from '../View/View';
-import type {TVParallaxPropertiesType} from '../TV/TVViewPropTypes';
 import Platform from '../../Utilities/Platform';
-import {tvFocusEventHandler} from '../TV/TVFocusEventHandler';
+import useMergeRefs from '../../Utilities/useMergeRefs';
 import tagForComponentOrHandle from '../TV/tagForComponentOrHandle';
+import {tvFocusEventHandler} from '../TV/TVFocusEventHandler';
+import View from '../View/View';
 import useAndroidRippleForView, {
   type RippleConfig,
 } from './useAndroidRippleForView';
@@ -403,7 +403,15 @@ function Pressable(props: Props, forwardedRef): React.Node {
         onLongPress && onLongPress(evt);
       }
     },
-    [focused, onBlur, onFocus, onLongPress, onPress, focusable, isTVSelectable, shouldUpdatePressed],
+    [
+      onBlur,
+      onFocus,
+      onLongPress,
+      onPress,
+      focusable,
+      isTVSelectable,
+      shouldUpdatePressed,
+    ],
   );
 
   React.useEffect(() => {

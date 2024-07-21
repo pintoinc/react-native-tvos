@@ -16,12 +16,12 @@ import Pressability, {
   type PressabilityConfig,
 } from '../../Pressability/Pressability';
 import {PressabilityDebugView} from '../../Pressability/PressabilityDebug';
-import TVTouchable from './TVTouchable';
 import {findHostInstance_DEPRECATED} from '../../ReactNative/RendererProxy';
 import processColor from '../../StyleSheet/processColor';
-import tagForComponentOrHandle from '../TV/tagForComponentOrHandle';
 import Platform from '../../Utilities/Platform';
+import tagForComponentOrHandle from '../TV/tagForComponentOrHandle';
 import {Commands} from '../View/ViewNativeComponent';
+import TVTouchable from './TVTouchable';
 import invariant from 'invariant';
 import * as React from 'react';
 

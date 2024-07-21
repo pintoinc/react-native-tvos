@@ -13,11 +13,11 @@ import type {ViewProps} from '../View/ViewPropTypes';
 
 import setAndForwardRef from '../../Utilities/setAndForwardRef';
 import {Commands} from '../View/ViewNativeComponent';
+import {StyleSheet} from '../../StyleSheet/StyleSheet';
+import View from '../View/View';
+import {findNodeHandle} from '../../ReactNative/RendererProxy';
 
 const React = require('react');
-const ReactNative = require('react-native');
-
-const {View} = ReactNative;
 
 type TVFocusGuideViewProps = $ReadOnly<{
   ...ViewProps,
@@ -69,14 +69,14 @@ function TVFocusGuideView(
   }: TVFocusGuideViewProps,
   forwardedRef,
 ): React.Node {
-  const focusGuideRef = React.useRef<React.ElementRef<
-    typeof ReactNative.View,
-  > | null>(null);
+  const focusGuideRef = React.useRef<React.ElementRef<typeof View> | null>(
+    null,
+  );
 
   const setDestinations = React.useCallback(
     (destinations: (?React.ElementRef<HostComponent<mixed>>)[]) => {
       const dests: number[] = (destinations || [])
-        .map(ReactNative.findNodeHandle)
+        .map(findNodeHandle)
         .filter(Boolean);
 
       if (focusGuideRef.current != null) {
@@ -121,7 +121,7 @@ function TVFocusGuideView(
 
   return (
     // $FlowFixMe[prop-missing]
-    <ReactNative.View
+    <View
       {...props}
       style={style}
       ref={_setNativeRef}
@@ -135,7 +135,7 @@ function TVFocusGuideView(
   );
 }
 
-const styles = ReactNative.StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     minWidth: 1,
     minHeight: 1,
