@@ -19,6 +19,8 @@
 
 const {echo, exec, exit} = require('shelljs');
 const argv = require('yargs').argv;
+const path = require('path');
+const fs = require('fs');
 
 const numberOfMaxWorkers = argv.maxWorkers || 1;
 let exitCode;
@@ -30,8 +32,31 @@ function describe(message) {
   echo(`\n\n>>>>> ${message}\n\n\n`);
 }
 
+function rewriteReactNativePackageName() {
+  const reactNativePackagePath = path.resolve(
+    '.',
+    'packages',
+    'react-native',
+    'package.json',
+  );
+  const reactNativeJsonString = fs.readFileSync(reactNativePackagePath, {
+    encoding: 'utf-8',
+  });
+  const reactNativeJson = JSON.parse(reactNativeJsonString);
+  reactNativeJson.name = 'react-native';
+  delete reactNativeJson.devDependencies;
+  fs.writeFileSync(
+    reactNativePackagePath,
+    JSON.stringify(reactNativeJson, null, 2),
+    {encoding: 'utf-8'},
+  );
+}
+
 try {
   echo('Executing JavaScript tests');
+
+  echo('Rewrite react-native package name...');
+  rewriteReactNativePackageName();
 
   describe('Test: feature flags codegen');
   if (exec(`${YARN_BINARY} run featureflags-check`).code) {
