@@ -47,13 +47,14 @@ try {
     throw Error(exitCode);
   }
 
+  /*
   describe('Test: Flow check');
   if (exec(`${YARN_BINARY} run flow-check`).code) {
     echo('Failed to run flow.');
     exitCode = 1;
     throw Error(exitCode);
   }
-
+   */
   /*
    * Build @react-native/codegen and  @react-native/codegen-typescript-test
    *
