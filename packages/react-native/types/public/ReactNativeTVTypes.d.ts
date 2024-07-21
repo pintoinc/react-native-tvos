@@ -59,7 +59,7 @@ declare module 'react-native' {
     } | undefined
   };
 
-  export const TVEventHandler:  {
+  export const TVEventHandler: {
     addListener: (listener: (event: HWEvent) => void) => EventSubscription | undefined
   };
 
@@ -184,5 +184,4 @@ declare module 'react-native' {
      */
     tvParallaxProperties?: TVParallaxProperties | undefined;
   }
-
 }
