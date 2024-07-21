@@ -1,60 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`setVersion updates monorepo for nightly: package.json 1`] = `
-"{
-  \\"name\\": \\"@react-native/monorepo\\",
-  \\"private\\": true,
-  \\"version\\": \\"1000.0.0\\",
-  \\"devDependencies\\": {
-    \\"@monorepo/pkg-c\\": \\"0.81.0-nightly-29282302-abcd1234\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo for nightly: packages/monorepo-pkg-a/package.json 1`] = `
-"{
-  \\"name\\": \\"@monorepo/pkg-a\\",
-  \\"version\\": \\"0.81.0-nightly-29282302-abcd1234\\",
-  \\"description\\": \\"@monorepo/pkg-a\\",
-  \\"dependencies\\": {
-    \\"@monorepo/pkg-b\\": \\"0.81.0-nightly-29282302-abcd1234\\",
-    \\"@monorepo/other\\": \\"0.0.1\\"
-  },
-  \\"devDependencies\\": {
-    \\"@monorepo/pkg-c\\": \\"0.81.0-nightly-29282302-abcd1234\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo for nightly: packages/monorepo-pkg-b/package.json 1`] = `
-"{
-  \\"name\\": \\"@monorepo/pkg-b\\",
-  \\"version\\": \\"0.81.0-nightly-29282302-abcd1234\\",
-  \\"description\\": \\"@monorepo/pkg-b\\",
-  \\"dependencies\\": {
-    \\"@monorepo/pkg-c\\": \\"0.81.0-nightly-29282302-abcd1234\\",
-    \\"metro-config\\": \\"^0.80.3\\",
-    \\"metro-runtime\\": \\"^0.80.3\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo for nightly: packages/monorepo-pkg-c/package.json 1`] = `
-"{
-  \\"name\\": \\"@monorepo/pkg-c\\",
-  \\"version\\": \\"0.81.0-nightly-29282302-abcd1234\\",
-  \\"description\\": \\"@monorepo/pkg-c\\",
-  \\"dependencies\\": {
-    \\"metro-config\\": \\"^0.80.3\\",
-    \\"metro-runtime\\": \\"^0.80.3\\"
-  }
-}
-"
-`;
-
 exports[`setVersion updates monorepo for nightly: packages/react-native/Libraries/Core/ReactNativeVersion.js 1`] = `
 "/**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
@@ -114,11 +59,6 @@ NSDictionary* RCTGetReactNativeVersion(void)
   });
   return __rnVersion;
 }
-"
-`;
-
-exports[`setVersion updates monorepo for nightly: packages/react-native/ReactAndroid/gradle.properties 1`] = `
-"VERSION_NAME=0.81.0-nightly-29282302-abcd1234
 "
 `;
 
@@ -186,7 +126,11 @@ exports[`setVersion updates monorepo for nightly: packages/react-native/package.
     \\"@monorepo/pkg-b\\": \\"0.81.0-nightly-29282302-abcd1234\\",
     \\"@monorepo/pkg-c\\": \\"0.81.0-nightly-29282302-abcd1234\\",
     \\"metro-config\\": \\"^0.80.3\\",
-    \\"metro-runtime\\": \\"^0.80.3\\"
+    \\"metro-runtime\\": \\"^0.80.3\\",
+    \\"@react-native-tvos/virtualized-lists\\": \\"0.81.0-nightly-29282302-abcd1234\\"
+  },
+  \\"devDependencies\\": {
+    \\"react-native-core\\": \\"npm:react-native@0.81.0\\"
   }
 }"
 `;
@@ -198,68 +142,13 @@ exports[`setVersion updates monorepo for nightly: packages/react-native/template
   \\"private\\": true,
   \\"dependencies\\": {
     \\"react\\": \\"18.2.0\\",
-    \\"react-native\\": \\"0.81.0-nightly-29282302-abcd1234\\"
+    \\"react-native\\": \\"npm:react-native-tvos@0.81.0-nightly-29282302-abcd1234\\"
   },
   \\"devDependencies\\": {
     \\"@monorepo/pkg-a\\": \\"0.81.0-nightly-29282302-abcd1234\\",
     \\"@monorepo/pkg-c\\": \\"0.81.0-nightly-29282302-abcd1234\\",
     \\"@types/react\\": \\"^18.2.6\\",
     \\"@types/react-test-renderer\\": \\"^18.0.0\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo for release-candidate: package.json 1`] = `
-"{
-  \\"name\\": \\"@react-native/monorepo\\",
-  \\"private\\": true,
-  \\"version\\": \\"1000.0.0\\",
-  \\"devDependencies\\": {
-    \\"@monorepo/pkg-c\\": \\"0.80.0-rc.3\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo for release-candidate: packages/monorepo-pkg-a/package.json 1`] = `
-"{
-  \\"name\\": \\"@monorepo/pkg-a\\",
-  \\"version\\": \\"0.80.0-rc.3\\",
-  \\"description\\": \\"@monorepo/pkg-a\\",
-  \\"dependencies\\": {
-    \\"@monorepo/pkg-b\\": \\"0.80.0-rc.3\\",
-    \\"@monorepo/other\\": \\"0.0.1\\"
-  },
-  \\"devDependencies\\": {
-    \\"@monorepo/pkg-c\\": \\"0.80.0-rc.3\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo for release-candidate: packages/monorepo-pkg-b/package.json 1`] = `
-"{
-  \\"name\\": \\"@monorepo/pkg-b\\",
-  \\"version\\": \\"0.80.0-rc.3\\",
-  \\"description\\": \\"@monorepo/pkg-b\\",
-  \\"dependencies\\": {
-    \\"@monorepo/pkg-c\\": \\"0.80.0-rc.3\\",
-    \\"metro-config\\": \\"^0.80.3\\",
-    \\"metro-runtime\\": \\"^0.80.3\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo for release-candidate: packages/monorepo-pkg-c/package.json 1`] = `
-"{
-  \\"name\\": \\"@monorepo/pkg-c\\",
-  \\"version\\": \\"0.80.0-rc.3\\",
-  \\"description\\": \\"@monorepo/pkg-c\\",
-  \\"dependencies\\": {
-    \\"metro-config\\": \\"^0.80.3\\",
-    \\"metro-runtime\\": \\"^0.80.3\\"
   }
 }
 "
@@ -327,11 +216,6 @@ NSDictionary* RCTGetReactNativeVersion(void)
 "
 `;
 
-exports[`setVersion updates monorepo for release-candidate: packages/react-native/ReactAndroid/gradle.properties 1`] = `
-"VERSION_NAME=0.80.0-rc.3
-"
-`;
-
 exports[`setVersion updates monorepo for release-candidate: packages/react-native/ReactAndroid/src/main/java/com/facebook/react/modules/systeminfo/ReactNativeVersion.java 1`] = `
 "/**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
@@ -396,7 +280,11 @@ exports[`setVersion updates monorepo for release-candidate: packages/react-nativ
     \\"@monorepo/pkg-b\\": \\"0.80.0-rc.3\\",
     \\"@monorepo/pkg-c\\": \\"0.80.0-rc.3\\",
     \\"metro-config\\": \\"^0.80.3\\",
-    \\"metro-runtime\\": \\"^0.80.3\\"
+    \\"metro-runtime\\": \\"^0.80.3\\",
+    \\"@react-native-tvos/virtualized-lists\\": \\"0.80.0-rc.3\\"
+  },
+  \\"devDependencies\\": {
+    \\"react-native-core\\": \\"npm:react-native@0.80.0\\"
   }
 }"
 `;
@@ -408,68 +296,13 @@ exports[`setVersion updates monorepo for release-candidate: packages/react-nativ
   \\"private\\": true,
   \\"dependencies\\": {
     \\"react\\": \\"18.2.0\\",
-    \\"react-native\\": \\"0.80.0-rc.3\\"
+    \\"react-native\\": \\"npm:react-native-tvos@0.80.0-rc.3\\"
   },
   \\"devDependencies\\": {
     \\"@monorepo/pkg-a\\": \\"0.80.0-rc.3\\",
     \\"@monorepo/pkg-c\\": \\"0.80.0-rc.3\\",
     \\"@types/react\\": \\"^18.2.6\\",
     \\"@types/react-test-renderer\\": \\"^18.0.0\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo for stable version: package.json 1`] = `
-"{
-  \\"name\\": \\"@react-native/monorepo\\",
-  \\"private\\": true,
-  \\"version\\": \\"1000.0.0\\",
-  \\"devDependencies\\": {
-    \\"@monorepo/pkg-c\\": \\"0.80.1\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo for stable version: packages/monorepo-pkg-a/package.json 1`] = `
-"{
-  \\"name\\": \\"@monorepo/pkg-a\\",
-  \\"version\\": \\"0.80.1\\",
-  \\"description\\": \\"@monorepo/pkg-a\\",
-  \\"dependencies\\": {
-    \\"@monorepo/pkg-b\\": \\"0.80.1\\",
-    \\"@monorepo/other\\": \\"0.0.1\\"
-  },
-  \\"devDependencies\\": {
-    \\"@monorepo/pkg-c\\": \\"0.80.1\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo for stable version: packages/monorepo-pkg-b/package.json 1`] = `
-"{
-  \\"name\\": \\"@monorepo/pkg-b\\",
-  \\"version\\": \\"0.80.1\\",
-  \\"description\\": \\"@monorepo/pkg-b\\",
-  \\"dependencies\\": {
-    \\"@monorepo/pkg-c\\": \\"0.80.1\\",
-    \\"metro-config\\": \\"^0.80.3\\",
-    \\"metro-runtime\\": \\"^0.80.3\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo for stable version: packages/monorepo-pkg-c/package.json 1`] = `
-"{
-  \\"name\\": \\"@monorepo/pkg-c\\",
-  \\"version\\": \\"0.80.1\\",
-  \\"description\\": \\"@monorepo/pkg-c\\",
-  \\"dependencies\\": {
-    \\"metro-config\\": \\"^0.80.3\\",
-    \\"metro-runtime\\": \\"^0.80.3\\"
   }
 }
 "
@@ -537,11 +370,6 @@ NSDictionary* RCTGetReactNativeVersion(void)
 "
 `;
 
-exports[`setVersion updates monorepo for stable version: packages/react-native/ReactAndroid/gradle.properties 1`] = `
-"VERSION_NAME=0.80.1
-"
-`;
-
 exports[`setVersion updates monorepo for stable version: packages/react-native/ReactAndroid/src/main/java/com/facebook/react/modules/systeminfo/ReactNativeVersion.java 1`] = `
 "/**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
@@ -606,7 +434,11 @@ exports[`setVersion updates monorepo for stable version: packages/react-native/p
     \\"@monorepo/pkg-b\\": \\"0.80.1\\",
     \\"@monorepo/pkg-c\\": \\"0.80.1\\",
     \\"metro-config\\": \\"^0.80.3\\",
-    \\"metro-runtime\\": \\"^0.80.3\\"
+    \\"metro-runtime\\": \\"^0.80.3\\",
+    \\"@react-native-tvos/virtualized-lists\\": \\"0.80.1\\"
+  },
+  \\"devDependencies\\": {
+    \\"react-native-core\\": \\"npm:react-native@0.80.1\\"
   }
 }"
 `;
@@ -618,68 +450,13 @@ exports[`setVersion updates monorepo for stable version: packages/react-native/t
   \\"private\\": true,
   \\"dependencies\\": {
     \\"react\\": \\"18.2.0\\",
-    \\"react-native\\": \\"0.80.1\\"
+    \\"react-native\\": \\"npm:react-native-tvos@0.80.1\\"
   },
   \\"devDependencies\\": {
     \\"@monorepo/pkg-a\\": \\"0.80.1\\",
     \\"@monorepo/pkg-c\\": \\"0.80.1\\",
     \\"@types/react\\": \\"^18.2.6\\",
     \\"@types/react-test-renderer\\": \\"^18.0.0\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo on main after release cut: package.json 1`] = `
-"{
-  \\"name\\": \\"@react-native/monorepo\\",
-  \\"private\\": true,
-  \\"version\\": \\"1000.0.0\\",
-  \\"devDependencies\\": {
-    \\"@monorepo/pkg-c\\": \\"0.82.0-main\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo on main after release cut: packages/monorepo-pkg-a/package.json 1`] = `
-"{
-  \\"name\\": \\"@monorepo/pkg-a\\",
-  \\"version\\": \\"0.82.0-main\\",
-  \\"description\\": \\"@monorepo/pkg-a\\",
-  \\"dependencies\\": {
-    \\"@monorepo/pkg-b\\": \\"0.82.0-main\\",
-    \\"@monorepo/other\\": \\"0.0.1\\"
-  },
-  \\"devDependencies\\": {
-    \\"@monorepo/pkg-c\\": \\"0.82.0-main\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo on main after release cut: packages/monorepo-pkg-b/package.json 1`] = `
-"{
-  \\"name\\": \\"@monorepo/pkg-b\\",
-  \\"version\\": \\"0.82.0-main\\",
-  \\"description\\": \\"@monorepo/pkg-b\\",
-  \\"dependencies\\": {
-    \\"@monorepo/pkg-c\\": \\"0.82.0-main\\",
-    \\"metro-config\\": \\"^0.80.3\\",
-    \\"metro-runtime\\": \\"^0.80.3\\"
-  }
-}
-"
-`;
-
-exports[`setVersion updates monorepo on main after release cut: packages/monorepo-pkg-c/package.json 1`] = `
-"{
-  \\"name\\": \\"@monorepo/pkg-c\\",
-  \\"version\\": \\"0.82.0-main\\",
-  \\"description\\": \\"@monorepo/pkg-c\\",
-  \\"dependencies\\": {
-    \\"metro-config\\": \\"^0.80.3\\",
-    \\"metro-runtime\\": \\"^0.80.3\\"
   }
 }
 "
@@ -747,11 +524,6 @@ NSDictionary* RCTGetReactNativeVersion(void)
 "
 `;
 
-exports[`setVersion updates monorepo on main after release cut: packages/react-native/ReactAndroid/gradle.properties 1`] = `
-"VERSION_NAME=1000.0.0
-"
-`;
-
 exports[`setVersion updates monorepo on main after release cut: packages/react-native/ReactAndroid/src/main/java/com/facebook/react/modules/systeminfo/ReactNativeVersion.java 1`] = `
 "/**
  * Copyright (c) Meta Platforms, Inc. and affiliates.
@@ -816,7 +588,11 @@ exports[`setVersion updates monorepo on main after release cut: packages/react-n
     \\"@monorepo/pkg-b\\": \\"0.82.0-main\\",
     \\"@monorepo/pkg-c\\": \\"0.82.0-main\\",
     \\"metro-config\\": \\"^0.80.3\\",
-    \\"metro-runtime\\": \\"^0.80.3\\"
+    \\"metro-runtime\\": \\"^0.80.3\\",
+    \\"@react-native-tvos/virtualized-lists\\": \\"1000.0.0\\"
+  },
+  \\"devDependencies\\": {
+    \\"react-native-core\\": \\"npm:react-native@1000.0.0\\"
   }
 }"
 `;
@@ -828,7 +604,7 @@ exports[`setVersion updates monorepo on main after release cut: packages/react-n
   \\"private\\": true,
   \\"dependencies\\": {
     \\"react\\": \\"18.2.0\\",
-    \\"react-native\\": \\"1000.0.0\\"
+    \\"react-native\\": \\"npm:react-native-tvos@1000.0.0\\"
   },
   \\"devDependencies\\": {
     \\"@monorepo/pkg-a\\": \\"0.82.0-main\\",

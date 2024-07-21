@@ -15,6 +15,11 @@ exports[`LogBoxContainer should render fatal with selectedIndex 2 1`] = `
     selectedIndex={2}
     total={3}
   />
+  <LogBoxInspectorFooter
+    level="fatal"
+    onDismiss={[Function]}
+    onMinimize={[Function]}
+  />
   <LogBoxInspectorBody
     log={
       LogBoxLog {
@@ -40,11 +45,6 @@ exports[`LogBoxContainer should render fatal with selectedIndex 2 1`] = `
     }
     onRetry={[Function]}
   />
-  <LogBoxInspectorFooter
-    level="fatal"
-    onDismiss={[Function]}
-    onMinimize={[Function]}
-  />
 </View>
 `;
 
@@ -64,6 +64,11 @@ exports[`LogBoxContainer should render warning with selectedIndex 0 1`] = `
     onSelectIndex={[Function]}
     selectedIndex={0}
     total={3}
+  />
+  <LogBoxInspectorFooter
+    level="warn"
+    onDismiss={[Function]}
+    onMinimize={[Function]}
   />
   <LogBoxInspectorBody
     log={
@@ -89,11 +94,6 @@ exports[`LogBoxContainer should render warning with selectedIndex 0 1`] = `
       }
     }
     onRetry={[Function]}
-  />
-  <LogBoxInspectorFooter
-    level="warn"
-    onDismiss={[Function]}
-    onMinimize={[Function]}
   />
 </View>
 `;

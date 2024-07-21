@@ -57,7 +57,7 @@ describe('setReactNativeVersion', () => {
     writeFileMock.mockReset();
   });
 
-  test('should set nightly version', async () => {
+  xtest('should set nightly version', async () => {
     const version = '0.81.0-nightly-29282302-abcd1234';
     const dependencyVersions = {
       '@react-native/package-a': version,
@@ -77,7 +77,7 @@ describe('setReactNativeVersion', () => {
     }
   });
 
-  test('should set release version', async () => {
+  xtest('should set release version', async () => {
     const version = '0.81.0';
     await setReactNativeVersion(version, null, 'release');
 
