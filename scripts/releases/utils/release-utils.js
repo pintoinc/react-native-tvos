@@ -21,7 +21,7 @@ type BuildType = 'dry-run' | 'release' | 'nightly' | 'prealpha';
 */
 
 function generateAndroidArtifacts(releaseVersion /*: string */) {
-  const mavenTempLocalUrl = process.env.MAVEN_TMP_LOCAL_URL;
+  const mavenTempLocalUrl = process.env.ORG_GRADLE_PROJECT_MAVEN_TMP_LOCAL_URL;
 
   const publishCommandLine = mavenTempLocalUrl
     ? `./gradlew -DMAVEN_TMP_LOCAL_URL=${mavenTempLocalUrl} publishAllToMavenTempLocal`
