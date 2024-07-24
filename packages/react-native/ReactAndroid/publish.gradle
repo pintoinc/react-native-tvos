@@ -1,10 +1,10 @@
-/* groovylint-disable CompileStatic, DuplicateStringLiteral, LineLength, NestedBlockDepth, NoDef, UnusedVariable, VariableTypeRequired */
 /*
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
+/* groovylint-disable CompileStatic, DuplicateStringLiteral, LineLength, NestedBlockDepth, NoDef, UnusedVariable, VariableTypeRequired */
 
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
@@ -16,7 +16,7 @@ def sonatypeUsername = findProperty('sonatypeUsername')
 def sonatypePassword = findProperty('sonatypePassword')
 
 def reactAndroidProjectDir = project(':packages:react-native:ReactAndroid').projectDir
-def mavenTempLocalUrl = findProperty('MAVEN_TMP_LOCAL_URL') ?: 'file:///tmp/maven-local'
+def mavenTempLocalUrl = 'file:///tmp/maven-local'
 
 publishing {
     publications {
@@ -71,22 +71,6 @@ publishing {
             name = 'mavenTempLocal'
             url = mavenTempLocalUrl
         }
-        maven {
-            name = 'sonatypeRelease'
-            url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
-            credentials(PasswordCredentials) {
-                username = sonatypeUsername
-                password = sonatypePassword
-            }
-        }
-        maven {
-            name = 'sonatypeSnapshot'
-            url = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
-            credentials(PasswordCredentials) {
-                username = sonatypeUsername
-                password = sonatypePassword
-            }
-        }
     }
 
     if (signingKey && signingPwd) {
@@ -100,13 +84,13 @@ publishing {
         signing {
             useGpgCmd()
             sign(publishing.publications.release)
-    // Properties that need to be set:
-    //
-    // signing.gnupg.executable=gpg
-    // signing.gnupg.useLegacyGpg=true
-    // signing.gnupg.keyName=(your key ID)
-    // signing.keyId=(your key ID)
-    // signing.secretKeyRingFile=(file with your exported secret keys)
+        // Properties that need to be set:
+        //
+        // signing.gnupg.executable=gpg
+        // signing.gnupg.useLegacyGpg=true
+        // signing.gnupg.keyName=(your key ID)
+        // signing.keyId=(your key ID)
+        // signing.secretKeyRingFile=(file with your exported secret keys)
         }
     }
 }
