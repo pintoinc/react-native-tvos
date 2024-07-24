@@ -21,21 +21,12 @@ type BuildType = 'dry-run' | 'release' | 'nightly' | 'prealpha';
 */
 
 function generateAndroidArtifacts(releaseVersion /*: string */) {
-  const mavenTempLocalUrl = process.env.ORG_GRADLE_PROJECT_MAVEN_TMP_LOCAL_URL;
-
-  const publishCommandLine = mavenTempLocalUrl
-    ? `./gradlew -DMAVEN_TMP_LOCAL_URL=${mavenTempLocalUrl} publishAllToMavenTempLocal`
-    : './gradlew publishAllToMavenTempLocal';
   // -------- Generating Android Artifacts
   echo('Generating Android artifacts inside /tmp/maven-local');
-  if (exec(publishCommandLine).code) {
+  if (exec('./gradlew publishAllToMavenTempLocal').code) {
     echo('Could not generate artifacts');
     exit(1);
   }
-
-  const mavenTempLocalPath = mavenTempLocalUrl
-    ? mavenTempLocalUrl.substring(7)
-    : '/tmp/maven-local';
 
   echo('Generated artifacts for Maven');
 
@@ -54,12 +45,12 @@ function generateAndroidArtifacts(releaseVersion /*: string */) {
     if (
       !test(
         '-e',
-        `${mavenTempLocalPath}/io/github/react-native-tvos/react-android/${releaseVersion}/${name}`,
+        `/tmp/maven-local/io/github/react-native-tvos/react-android/${releaseVersion}/${name}`,
       )
     ) {
       echo(
         `Failing as expected file: \n\
-      ${mavenTempLocalPath}/io/github/react-native-tvos/react-android/${releaseVersion}/${name}\n\
+      /tmp/maven-local/io/github/react-native-tvos/react-android/${releaseVersion}/${name}\n\
       was not correctly generated.`,
       );
       exit(1);
@@ -74,7 +65,7 @@ function publishAndroidArtifactsToMaven(
   // -------- Publish every artifact to Maven Central
   // The GPG key is base64 encoded on CircleCI and then decoded here
 
-  // Comment this out for the TV repo, we are doing manual signing for now
+  // Below code is disabled for the TV repo for now
 
   // $FlowFixMe[prop-missing]
   //let buff = Buffer.from(env.ORG_GRADLE_PROJECT_SIGNING_KEY_ENCODED, 'base64');
