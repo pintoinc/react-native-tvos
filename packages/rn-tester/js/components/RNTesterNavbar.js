@@ -12,7 +12,8 @@ import type {RNTesterTheme} from './RNTesterTheme';
 
 import {RNTesterThemeContext} from './RNTesterTheme';
 import * as React from 'react';
-import {Image, Platform, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Image, Pressable, StyleSheet, Text, TVFocusGuideView, View} from 'react-native';
+
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -26,31 +27,32 @@ const NavbarButton = ({
   handlePress,
   iconStyle,
 }) => {
-  const [isFocused, setIsFocused] = React.useState(false);
-  return ((
-  <Pressable
-    testID={testID}
-    onPress={handlePress}
-    onFocus={() => setIsFocused(true)}
-    onBlur={() => setIsFocused(false)}
-    style={[styles.navButton, {backgroundColor: theme.BackgroundColor}]}>
-    <View
-      style={[styles.pressableContent, isActive ? styles.activeBar : null]}
-      collapsable={false}>
-      <Image
-        style={iconStyle}
-        source={isFocused || isActive ? activeImage : inactiveImage}
-      />
-      <Text
-        style={{
-          color: isFocused || isActive
-            ? theme.NavBarLabelActiveColor
-            : theme.NavBarLabelInactiveColor,
-        }}>
-        {label}
-      </Text>
-    </View>
-  </Pressable>
+  
+  return (
+    <Pressable
+      testID={testID}
+      onPress={handlePress}
+      style={[styles.navButton, {backgroundColor: theme.BackgroundColor}]}>
+      {({focused}) => {
+        return (
+          <View
+            style={[
+              styles.pressableContent,
+              focused ? styles.focusedBar : null,
+              isActive ? styles.activeBar : null,
+            ]}
+            collapsable={false}>
+            <Image
+              style={iconStyle}
+              source={isActive ? activeImage : inactiveImage}
+            />
+            <Text style={isActive ? styles.activeText : styles.inactiveText}>
+              {label}
+            </Text>
+          </View>
+        );
+      }}
+    </Pressable>
   );
 };
 
@@ -67,8 +69,8 @@ const ComponentTab = ({
     testID="components-tab"
     label="Components"
     handlePress={() => handleNavBarPress({screen: 'components'})}
-    activeImage={theme.NavBarComponentsActiveIcon}
-    inactiveImage={theme.NavBarComponentsInactiveIcon}
+    activeImage={require('./../assets/bottom-nav-components-icon-active.png')}
+    inactiveImage={require('./../assets/bottom-nav-components-icon-inactive.png')}
     isActive={isComponentActive}
     theme={theme}
     iconStyle={styles.componentIcon}
@@ -88,8 +90,8 @@ const APITab = ({
     testID="apis-tab"
     label="APIs"
     handlePress={() => handleNavBarPress({screen: 'apis'})}
-    activeImage={theme.NavBarAPIsActiveIcon}
-    inactiveImage={theme.NavBarAPIsInactiveIcon}
+    activeImage={require('./../assets/bottom-nav-apis-icon-active.png')}
+    inactiveImage={require('./../assets/bottom-nav-apis-icon-inactive.png')}
     isActive={isAPIActive}
     theme={theme}
     iconStyle={styles.apiIcon}
@@ -113,7 +115,7 @@ const RNTesterNavbar = ({
   const isComponentActive = screen === 'components' && !isExamplePageOpen;
 
   return (
-    <View>
+    <TVFocusGuideView autoFocus>
       <View style={styles.buttonContainer}>
         <ComponentTab
           isComponentActive={isComponentActive}
@@ -126,7 +128,7 @@ const RNTesterNavbar = ({
           theme={theme}
         />
       </View>
-    </View>
+    </TVFocusGuideView>
   );
 };
 
@@ -166,6 +168,15 @@ const styles = StyleSheet.create({
     width: 30,
     height: 20,
     alignSelf: 'center',
+  },
+  activeText: {
+    color: '#5E5F62',
+  },
+  inactiveText: {
+    color: '#B1B4BA',
+  },
+  focusedBar: {
+    backgroundColor: '#DDDDDD',
   },
   activeBar: {
     borderTopWidth: 2,
