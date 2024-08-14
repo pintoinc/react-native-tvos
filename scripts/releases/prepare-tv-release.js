@@ -19,16 +19,16 @@
  *
  */
 
-const {exec, echo, exit, test, env} = require('shelljs');
+const releaseVersion =
+  require('../../packages/react-native/package.json').version;
+const {generateAndroidArtifacts} = require('./utils/release-utils');
 const fs = require('fs');
 const fs_extra = require('fs-extra');
 const os = require('os');
 const path = require('path');
-
-const {generateAndroidArtifacts} = require('./utils/release-utils');
+const {echo, env, exec, exit, test} = require('shelljs');
 
 let extraHermesDirectoryPath;
-
 {
   const HERMES_INSTALL_LOCATION = 'packages/react-native/sdks';
   const HERMES_SOURCE_DEST_PATH = `${HERMES_INSTALL_LOCATION}/hermes`;
@@ -81,8 +81,6 @@ let extraHermesDirectoryPath;
     exit(1);
   }
 }
-
-const releaseVersion = require('../../packages/react-native/package.json').version;
 
 // generate Maven artifacts in /tmp/maven-local
 

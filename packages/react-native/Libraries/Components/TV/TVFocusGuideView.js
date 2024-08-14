@@ -11,11 +11,11 @@
 import type {HostComponent} from '../../Renderer/shims/ReactNativeTypes';
 import type {ViewProps} from '../View/ViewPropTypes';
 
-import setAndForwardRef from '../../Utilities/setAndForwardRef';
-import {Commands} from '../View/ViewNativeComponent';
-import {StyleSheet} from '../../StyleSheet/StyleSheet';
-import View from '../View/View';
 import {findNodeHandle} from '../../ReactNative/RendererProxy';
+import {StyleSheet} from '../../StyleSheet/StyleSheet';
+import setAndForwardRef from '../../Utilities/setAndForwardRef';
+import View from '../View/View';
+import {Commands} from '../View/ViewNativeComponent';
 
 const React = require('react');
 

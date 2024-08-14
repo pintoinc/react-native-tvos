@@ -12,8 +12,14 @@ import type {RNTesterTheme} from './RNTesterTheme';
 
 import {RNTesterThemeContext} from './RNTesterTheme';
 import * as React from 'react';
-import {Image, Pressable, StyleSheet, Text, TVFocusGuideView, View} from 'react-native';
-
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TVFocusGuideView,
+  View,
+} from 'react-native';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -27,7 +33,6 @@ const NavbarButton = ({
   handlePress,
   iconStyle,
 }) => {
-  
   return (
     <Pressable
       testID={testID}
