@@ -81,7 +81,7 @@ val hermesBuildOutputFileTree =
             "**/link.txt")
 
 var hermesVersion = "main"
-val hermesVersionFile = File(reactNativeRootDir, "../../node_modules/react-native-core/sdks/.hermesversion")
+val hermesVersionFile = File(reactNativeRootDir, "sdks/.hermesversion")
 
 if (hermesVersionFile.exists()) {
   hermesVersion = hermesVersionFile.readText()
