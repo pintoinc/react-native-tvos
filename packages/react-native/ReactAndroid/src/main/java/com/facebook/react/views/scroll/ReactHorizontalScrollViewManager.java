@@ -11,12 +11,8 @@ import android.graphics.Color;
 import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
-<<<<<<< HEAD
 import com.facebook.infer.annotation.Nullsafe;
-||||||| parent of bdf88aef4db (Patches for TV for 0.73)
-=======
 import com.facebook.react.modules.i18nmanager.I18nUtil;
->>>>>>> bdf88aef4db (Patches for TV for 0.73)
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.RetryableMountingLayerException;

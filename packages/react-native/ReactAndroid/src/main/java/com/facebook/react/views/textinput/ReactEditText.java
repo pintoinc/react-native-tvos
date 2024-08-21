@@ -9,16 +9,13 @@ package com.facebook.react.views.textinput;
 
 import static com.facebook.react.uimanager.UIManagerHelper.getReactContext;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.app.UiModeManager;
 import android.content.Context;
-<<<<<<< HEAD
 import android.graphics.Canvas;
-||||||| parent of bdf88aef4db (Patches for TV for 0.73)
-=======
 import android.content.res.Configuration;
->>>>>>> bdf88aef4db (Patches for TV for 0.73)
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -678,6 +675,7 @@ public class ReactEditText extends AppCompatEditText {
   }
 
   // VisibleForTesting from {@link TextInputEventsTestCase}.
+  @SuppressLint("WrongConstant")
   public void maybeSetText(ReactTextUpdate reactTextUpdate) {
     if (isSecureText() && TextUtils.equals(getText(), reactTextUpdate.getText())) {
       return;
