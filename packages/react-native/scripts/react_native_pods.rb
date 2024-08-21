@@ -6,7 +6,6 @@
 require 'json'
 require 'open3'
 require 'pathname'
-require_relative './cocoapods/FlipperConfiguration.rb'
 require_relative './react_native_pods_utils/script_phases.rb'
 require_relative './cocoapods/jsengine.rb'
 require_relative './cocoapods/fabric.rb'
