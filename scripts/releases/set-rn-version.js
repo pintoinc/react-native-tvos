@@ -20,7 +20,6 @@ const {parseVersion, validateBuildType} = require('./utils/version-utils');
 const {parseArgs} = require('@pkgjs/parseargs');
 const {promises: fs} = require('fs');
 const path = require('path');
-const {exec} = require('shelljs');
 
 const GRADLE_FILE_PATH = path.join(
   REPO_ROOT,
@@ -30,20 +29,16 @@ const REACT_NATIVE_PACKAGE_JSON = path.join(
   REPO_ROOT,
   'packages/react-native/package.json',
 );
-const VIRTUALIZED_LISTS_PACKAGE_JSON = path.join(
-  REPO_ROOT,
-  'packages/virtualized-lists/package.json',
-);
 
 const config = {
   options: {
+    'build-type': {
+      type: 'string',
+      short: 'b',
+    },
     'to-version': {
       type: 'string',
       short: 'v',
-    },
-    commit: {
-      type: 'boolean',
-      short: 'c',
     },
     help: {type: 'boolean'},
   },
@@ -51,7 +46,7 @@ const config = {
 
 async function main() {
   const {
-    values: {help, 'to-version': toVersion, commit},
+    values: {help, 'build-type': buildType, 'to-version': toVersion},
   } = parseArgs(config);
 
   if (help) {
@@ -62,15 +57,11 @@ async function main() {
   materialize the given release version.
 
   Options:
+    --build-type       One of ['dry-run', 'nightly', 'release', 'prealpha'].
     --to-version       The new version string.
-    --commit           If true, commit the changes
     `);
     return;
   }
-
-  const buildType = 'release';
-
-  const doCommit = commit ?? false;
 
   if (!validateBuildType(buildType)) {
     throw new Error(`Unsupported build type: ${buildType}`);
@@ -80,7 +71,6 @@ async function main() {
     toVersion ?? getNpmInfo(buildType).version,
     {},
     buildType,
-    doCommit,
   );
 }
 
@@ -88,35 +78,12 @@ async function setReactNativeVersion(
   version /*: string */,
   dependencyVersions /*: ?Record<string, string> */,
   buildType /*: ?BuildType */,
-  commit /*: boolean */,
 ) {
   const versionInfo = parseVersion(version, buildType);
 
   await updateSourceFiles(versionInfo);
   await setReactNativePackageVersion(versionInfo.version, dependencyVersions);
-  await setVirtualizedListVersion(versionInfo.version, dependencyVersions);
   await updateGradleFile(versionInfo.version);
-  if (commit) {
-    commitAsync(versionInfo.version);
-  }
-}
-
-async function commitAsync(version /*: string */) {
-  const filesToCommit = [
-    'packages/react-native/Libraries/Core/ReactNativeVersion.js',
-    'packages/react-native/React/Base/RCTVersion.m',
-    'packages/react-native/ReactAndroid/gradle.properties',
-    'packages/react-native/ReactAndroid/src/main/java/com/facebook/react/modules/systeminfo/ReactNativeVersion.java',
-    'packages/react-native/ReactCommon/cxxreact/ReactNativeVersion.h',
-    'packages/react-native/package.json',
-    'packages/react-native/template/package.json',
-    'packages/virtualized-lists/package.json',
-    'package.json',
-    'yarn.lock',
-  ];
-  exec('yarn');
-  exec(`git add ${filesToCommit.join(' ')}`);
-  exec(`git commit -m "Bump version number (${version})"`);
 }
 
 async function setReactNativePackageVersion(
@@ -136,43 +103,9 @@ async function setReactNativePackageVersion(
 
   packageJson.version = version;
 
-  // Update virtualized-lists dependency
-  packageJson.dependencies['@react-native-tvos/virtualized-lists'] = version;
-
-  // Derive core version from this version, e.g. 73.0-0 uses core version 73.0
-  const coreVersion = version.split('-')[0] + '-rc.3';
-  packageJson.devDependencies = packageJson.devDependencies ?? {};
-  packageJson.devDependencies[
-    'react-native-core'
-  ] = `npm:react-native@${coreVersion}`;
-
   await fs.writeFile(
     path.join(REPO_ROOT, 'packages/react-native/package.json'),
     JSON.stringify(packageJson, null, 2) + '\n',
-  );
-}
-
-async function setVirtualizedListVersion(
-  version /*: string */,
-  dependencyVersions /*: ?Record<string, string> */,
-) {
-  const originalPackageJsonContent = await fs.readFile(
-    VIRTUALIZED_LISTS_PACKAGE_JSON,
-    'utf-8',
-  );
-  const originalPackageJson = JSON.parse(originalPackageJsonContent);
-
-  const packageJson =
-    dependencyVersions != null
-      ? applyPackageVersions(originalPackageJson, dependencyVersions)
-      : originalPackageJson;
-
-  packageJson.version = version;
-
-  await fs.writeFile(
-    VIRTUALIZED_LISTS_PACKAGE_JSON,
-    JSON.stringify(packageJson, null, 2),
-    'utf-8',
   );
 }
 
