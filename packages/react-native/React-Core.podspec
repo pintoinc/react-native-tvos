@@ -36,7 +36,7 @@ header_subspecs = {
   'RCTPushNotificationHeaders'  => 'Libraries/PushNotificationIOS/*.h',
   'RCTSettingsHeaders'          => 'Libraries/Settings/*.h',
   'RCTTextHeaders'              => 'Libraries/Text/**/*.h',
-  # 'RCTVibrationHeaders'         => 'Libraries/Vibration/*.h',
+  'RCTVibrationHeaders'         => 'Libraries/Vibration/*.h',
 }
 
 frameworks_search_paths = []
