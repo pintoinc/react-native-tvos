@@ -148,8 +148,9 @@ static NSDictionary *updateInitialProps(NSDictionary *initialProps, BOOL isFabri
     RCTSurfaceHostingProxyRootView *surfaceHostingProxyRootView = [[RCTSurfaceHostingProxyRootView alloc]
         initWithSurface:surface
         sizeMeasureMode:RCTSurfaceSizeMeasureModeWidthExact | RCTSurfaceSizeMeasureModeHeightExact];
-
+#if !TARGET_OS_TV
     surfaceHostingProxyRootView.backgroundColor = [UIColor systemBackgroundColor];
+#endif
     if (self->_configuration.customizeRootView != nil) {
       self->_configuration.customizeRootView(surfaceHostingProxyRootView);
     }

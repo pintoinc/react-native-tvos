@@ -528,7 +528,6 @@ RCT_ENUM_CONVERTER(
     }),
     NSNotFound,
     unsignedIntegerValue)
-#endif
 RCT_ENUM_CONVERTER(
     UIModalPresentationStyle,
     (@{
@@ -539,6 +538,7 @@ RCT_ENUM_CONVERTER(
     }),
     UIModalPresentationFullScreen,
     integerValue)
+#endif
 
 RCT_ENUM_CONVERTER(
     UIViewContentMode,
