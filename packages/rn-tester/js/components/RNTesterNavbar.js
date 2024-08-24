@@ -12,8 +12,14 @@ import type {RNTesterTheme} from './RNTesterTheme';
 
 import {RNTesterThemeContext} from './RNTesterTheme';
 import * as React from 'react';
-import {Image, Pressable, StyleSheet, Text, TVFocusGuideView, View} from 'react-native';
-
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TVFocusGuideView,
+  View,
+} from 'react-native';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -27,7 +33,6 @@ const NavbarButton = ({
   handlePress,
   iconStyle,
 }) => {
-  
   return (
     <Pressable
       testID={testID}
@@ -69,8 +74,8 @@ const ComponentTab = ({
     testID="components-tab"
     label="Components"
     handlePress={() => handleNavBarPress({screen: 'components'})}
-    activeImage={require('./../assets/bottom-nav-components-icon-active.png')}
-    inactiveImage={require('./../assets/bottom-nav-components-icon-inactive.png')}
+    activeImage={theme.NavBarComponentsActiveIcon}
+    inactiveImage={theme.NavBarComponentsInactiveIcon}
     isActive={isComponentActive}
     theme={theme}
     iconStyle={styles.componentIcon}
@@ -90,8 +95,8 @@ const APITab = ({
     testID="apis-tab"
     label="APIs"
     handlePress={() => handleNavBarPress({screen: 'apis'})}
-    activeImage={require('./../assets/bottom-nav-apis-icon-active.png')}
-    inactiveImage={require('./../assets/bottom-nav-apis-icon-inactive.png')}
+    activeImage={theme.NavBarComponentsActiveIcon}
+    inactiveImage={theme.NavBarComponentsInactiveIcon}
     isActive={isAPIActive}
     theme={theme}
     iconStyle={styles.apiIcon}

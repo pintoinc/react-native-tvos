@@ -29,7 +29,6 @@ import * as React from 'react';
 import {
   BackHandler,
   Button,
-  Platform,
   Linking,
   Platform,
   StyleSheet,
