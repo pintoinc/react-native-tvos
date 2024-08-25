@@ -57,13 +57,12 @@ export default function LogBoxNotification(props: Props): React.Node {
       {Platform.isTV ? (
         <LogBoxButton
           onPress={props.onPressDismiss}
-          style={toastStyles.press}
+          style={styles.press}
           backgroundColor={{
             default: LogBoxStyle.getBackgroundColor(1),
             pressed: LogBoxStyle.getBackgroundColor(0.9),
           }}>
-          <View
-            style={toastStyles.tvDismissContainer}>
+          <View style={styles.tvDismissContainer}>
             <Message message={{content: 'Dismiss', substitutions: []}} />
           </View>
         </LogBoxButton>
@@ -74,7 +73,7 @@ export default function LogBoxNotification(props: Props): React.Node {
 
 const styles = StyleSheet.create({
   container: {
-    height: (Platform.isTV ? 96 : 48),
+    height: Platform.isTV ? 96 : 48,
     position: 'relative',
     width: '100%',
     justifyContent: 'center',
@@ -106,5 +105,5 @@ const styles = StyleSheet.create({
     flexBasis: 'auto',
     height: 30,
     justifyContent: 'center',
-  }
+  },
 });

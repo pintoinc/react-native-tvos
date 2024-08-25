@@ -276,9 +276,6 @@ function Pressable(
 
   const [pressed, setPressed] = usePressState(testOnly_pressed === true);
 
-  const shouldUpdatePressed =
-    typeof children === 'function' || typeof style === 'function';
-
   const [focused, setFocused] = useState(false);
 
   const shouldUpdatePressed =
@@ -346,7 +343,7 @@ function Pressable(
         if (onFocus != null) {
           onFocus(event);
         }
-      ),
+      },
       onLongPress,
       onPress,
       onPressIn(event: PressEvent): void {
@@ -419,7 +416,16 @@ function Pressable(
         onLongPress && onLongPress(evt);
       }
     },
-    [focused, onBlur, onFocus, onLongPress, onPress, focusable, isTVSelectable, shouldUpdatePressed],
+    [
+      focused,
+      onBlur,
+      onFocus,
+      onLongPress,
+      onPress,
+      focusable,
+      isTVSelectable,
+      shouldUpdatePressed,
+    ],
   );
 
   React.useEffect(() => {
