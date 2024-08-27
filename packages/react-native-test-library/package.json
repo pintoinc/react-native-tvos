@@ -27,11 +27,11 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@react-native/babel-preset": "0.75.2-0rc0",
-    "react-native": "0.75.2-0rc0"
+    "react-native-tvos": "0.75.2-0rc0"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native-tvos": "*"
   },
   "codegenConfig": {
     "name": "OSSLibraryExampleSpec",
