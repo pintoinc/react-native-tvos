@@ -175,6 +175,11 @@ module.exports = {
     return require('./Libraries/Components/Switch/Switch').default;
   },
   get TabBarIOS(): TabBarIOS {
+    warnOnce(
+      'tab-bar-ios-deprecated',
+      'TabBarIOS does not work in the new architecture (Fabric), and is now deprecated.' +
+        'It will be removed in a future release.'
+    );
     return require('./Libraries/Components/TabBarIOS/TabBarIOS');
   },
   get Text(): Text {
